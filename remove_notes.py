@@ -17,8 +17,8 @@ def render_note(console: Console, markdown: str, note_name: str) -> None:
   console.print(f'[bold red]{note_name}[/bold red]')
   console.print()
   console.print(Markdown(markdown))
-  console.print('')  
-  
+  console.print('')
+
 
 def maybe_remove_note(
     console: Console,
@@ -29,7 +29,7 @@ def maybe_remove_note(
   if search_string not in markdown:
     return False
   note_name = os.path.basename(note_path)
-  render_note(console, markdown, note_name)  
+  render_note(console, markdown, note_name)
   really_delete = Confirm.ask(
       f'Really delete [bold red]{note_name}[/bold red]?')
   if really_delete:
