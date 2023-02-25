@@ -5,12 +5,8 @@ import fire
 from rich.console import Console
 from rich.prompt import Confirm
 
+from utils import read_note
 from utils import render_note
-
-
-def read_file(note_path: str) -> str:
-  with open(note_path, 'r') as f:
-    return f.read()
 
 
 def maybe_remove_note(
@@ -18,7 +14,7 @@ def maybe_remove_note(
     note_path: str,
     search_string: str,
 ) -> bool:
-  markdown = read_file(note_path)
+  markdown = read_note(note_path).content
   if search_string not in markdown:
     return False
   note_name = os.path.basename(note_path)
