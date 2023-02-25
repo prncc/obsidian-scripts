@@ -38,6 +38,11 @@ def maybe_remove_note(
 
 
 def remove_notes(search_string: str, directory: str = '~/Obsidian/Vault/Box'):
+  """Remove notes that contain search_string.
+
+  You'll be asked whether to remove each note containing the string you
+  specified.
+  """
   directory = os.path.abspath(directory.replace('~', os.environ['HOME']))
   console = Console()
   deleted = {True: 0, False: 0}
