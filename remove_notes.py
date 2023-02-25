@@ -7,12 +7,12 @@ from rich.markdown import Markdown
 from rich.prompt import Confirm
 
 
-def read_file(note_path):
+def read_file(note_path: str) -> str:
   with open(note_path, 'r') as f:
     return f.read()
 
 
-def render_note(console, markdown, note_name):
+def render_note(console: Console, markdown: str, note_name: str) -> None:
   console.clear()
   console.print(f'[bold red]{note_name}[/bold red]')
   console.print()
@@ -20,7 +20,11 @@ def render_note(console, markdown, note_name):
   console.print('')  
   
 
-def maybe_remove_note(console, note_path, search_string):  
+def maybe_remove_note(
+    console: Console,
+    note_path: str,
+    search_string: str,
+) -> bool:
   markdown = read_file(note_path)
   if search_string not in markdown:
     return False
@@ -33,7 +37,7 @@ def maybe_remove_note(console, note_path, search_string):
     return True
 
 
-def remove_notes(search_string, directory='~/Obsidian/Vault/Box'):
+def remove_notes(search_string: str, directory: str = '~/Obsidian/Vault/Box'):
   directory = os.path.abspath(directory.replace('~', os.environ['HOME']))
   console = Console()
   deleted = {True: 0, False: 0}
