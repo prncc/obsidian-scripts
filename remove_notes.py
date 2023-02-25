@@ -28,6 +28,7 @@ def maybe_remove_note(
   if really_delete:
     os.remove(note_path)
     return True
+  return False
 
 
 def remove_notes(search_string: str, directory: str = '~/Obsidian/Vault/Box'):
