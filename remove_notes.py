@@ -3,21 +3,14 @@ import os
 
 import fire
 from rich.console import Console
-from rich.markdown import Markdown
 from rich.prompt import Confirm
+
+from utils import render_note
 
 
 def read_file(note_path: str) -> str:
   with open(note_path, 'r') as f:
     return f.read()
-
-
-def render_note(console: Console, markdown: str, note_name: str) -> None:
-  console.clear()
-  console.print(f'[bold red]{note_name}[/bold red]')
-  console.print()
-  console.print(Markdown(markdown))
-  console.print('')
 
 
 def maybe_remove_note(
